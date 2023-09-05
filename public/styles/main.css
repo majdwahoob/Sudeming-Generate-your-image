@@ -46,10 +46,20 @@ header {
     position: absolute;
     width: 2.5px;
     height: 2.2rem;
-    background-color: black;
+    background-color: var(--c3);
     right: -8px;
     top: 0px;
+    animation: blink .7s infinite;
 }
+.website__title .title p span.stop-blinking::after {
+    animation: none;
+}
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
 .hamburger {
     display: none;
 }
@@ -273,6 +283,10 @@ main {
         position: absolute;
         width: 2.5px;
         height: 2.2rem;
-        background-color: black;
+        background-color: var(--c3);
+        animation: blink .7s infinite;
+    }
+    .website__title .title-500.stop-blinking::after {
+        animation: none;
     }
 }

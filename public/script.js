@@ -14,6 +14,7 @@ const typeEffect = () => {
     let currentWord = words[wordIndex];
     let currentChar = currentWord.substring(0, charIndex);
     dynamicText.textContent = currentChar;
+    dynamicText.classList.add("stop-blinking");
 
     if(!isDeleting && charIndex < currentWord.length) {
         charIndex++;
@@ -23,6 +24,7 @@ const typeEffect = () => {
         setTimeout(typeEffect, 100);
     } else {
         isDeleting = !isDeleting;
+        dynamicText.classList.remove("stop-blinking");
         wordIndex = !isDeleting ? (wordIndex + 1) % words.length : wordIndex;
         setTimeout(typeEffect, 1200);
     }
