@@ -1,5 +1,10 @@
-const dynamicText = document.querySelector(".nav-bar .website__title .title span");
-const words = ["Generate your image now", "Free webiste", "uwu"];
+let dynamicText;
+if(window.innerWidth < 500) {
+    dynamicText = document.querySelector(".website__title .title .title-500");
+} else {
+    dynamicText = document.querySelector(".website__title .title p span");
+}
+const words = ["Generate your image", "Free webiste", "uwu"];
 
 let wordIndex = 0;
 let charIndex = 1;
@@ -22,5 +27,10 @@ const typeEffect = () => {
         setTimeout(typeEffect, 1200);
     }
 };
+
+document.querySelector(".hamburger").onclick = function() {
+    document.querySelector(".nav-bar").classList.toggle("active");
+    document.querySelector("main").classList.toggle("active");
+}
 
 typeEffect();

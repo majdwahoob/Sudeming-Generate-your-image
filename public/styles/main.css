@@ -13,62 +13,86 @@
 * {
     margin: 0;
     padding: 0;
+    list-style: none;
+    text-decoration: none;
     box-sizing: border-box;
 }
 body {
     background-color: var(--c4);
 }
-.nav-bar {
+header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 2rem 4rem;
+    padding: 2rem 4rem 0 4rem;
     font-family: var(--font-family2);
-    margin-bottom: 5rem;
+    height: 7.1875rem;
 }
 .website__title {
     display: flex;
     align-items: center;
     gap: .6rem;
 }
-.website__title .title {
+.website__title .title p {
     opacity: 85%;
     position: relative;
 }
-.website__title .title span {
+.website__title .title p span,
+.website__title .title-500 {
     color: var(--c3);
 }
-.website__title .title::after {
+.website__title .title p span::after {
     content: "";
     position: absolute;
     width: 2.5px;
-    height: 2.4rem;
+    height: 2.2rem;
     background-color: black;
     right: -8px;
-    top: 5px;
+    top: 0px;
 }
-.website__info {
+.hamburger {
     display: none;
 }
-.nav-bar .website__options .option {
+.nav-bar ul {
+    display: flex;
+}
+.nav-bar ul li a {
+    display: block;
+    color: black;
+    font-size: 1.25rem;
+    padding: .5rem;
+    border-radius: 1rem;
+}
+.nav-bar ul li a.active {
+    background-color: rgb(231, 231, 231);
+}
+.nav-bar ul li a:hover {
+    background-color: rgb(211, 211, 211);
+}
+.nav-bar ul li:not(:first-child) a {
+    margin-left: 3.5rem;
+}
+header .website__options .option {
     text-decoration: none;
     color: inherit;
-    font-size: large;
+    font-size: 1.2rem;
 }
-.nav-bar .website__options .option:not(:first-child) {
+header .website__options .option:not(:first-child) {
     margin-left: 4rem;
 }
 main {
     display: grid;
     place-content: center;
     font-family: var(--font-family1);
-    margin-bottom: 5rem;
+    margin: 5rem 0;
+    transition: .5s;
 }
 .choose {
     margin: 0 auto;
     margin-bottom: 3rem;
     font-weight: 500;
     opacity: 75%;
+    text-align: center;
 }
 .container {
     display: flex;
@@ -127,12 +151,15 @@ main {
     border: none;
     background-color: var(--c3);
     border-radius: 1rem;
-    font-size: 1.2rem;
+    font-size: 1rem;
     padding: .5rem 3rem;
     font-family: var(--font-family1);
     color: white;
     font-weight: 300;
     cursor: pointer;
+}
+.box .choosing__btn:hover {
+    background-color: #38c0c8;
 }
 .img__container {
     width: 25rem;
@@ -147,4 +174,105 @@ main {
     font-family: var(--font-family2);
     font-size: 2rem;
     
+}
+@media (max-width: 1068px) {
+    header {
+        padding: 2rem 3rem 0 3rem;
+    }
+    .container {
+        flex-direction: column;
+    }
+    .container .line {
+        border-top: 2px solid var(--c3);
+        border-left: none;
+    }
+    .nav-bar {
+        opacity: 1;
+    }
+}
+@media (max-width: 920px) {
+    main.active {
+        margin: 13rem 0 5rem 0;
+    }
+    .hamburger {
+        display: block;
+        cursor: pointer;
+        border-radius: 50%;
+        height: 3rem;
+        width: 3rem;
+        display: grid;
+        place-content: center;
+    }
+    .hamburger:hover {
+        background-color: rgb(231, 231, 231);
+    }
+    .hamburger .row {
+        width: 30px;
+        height: 3px;
+        background-color: black;
+        margin: 3px 0;
+    }
+    .nav-bar ul li:not(:first-child) a {
+        margin: 0;
+    }
+    .nav-bar {
+        position: absolute;
+        background-color: var(--c3);
+        top: 7.1875rem;
+        left: 0;
+        right: 0;
+        z-index: 1;
+        overflow: hidden;
+        opacity: 0;
+    }
+    .nav-bar ul {
+        flex-direction: column;
+        width: fit-content;
+        margin: 0 auto;
+        text-align: center;
+        margin-top: 1rem;
+    }
+    .nav-bar ul li{
+        margin-bottom: 1rem;
+    }
+    .nav-bar ul li a {
+        padding: .3rem;
+        border-radius: 1rem;
+    }
+    .nav-bar ul li a:hover {
+        background-color: rgb(231, 231, 231);
+    }
+    .nav-bar.active {
+        opacity: 1;
+        transition: .2s;
+    }
+}
+@media (max-width: 650px) {
+    html {
+        font-size: 75%;
+    }
+    .container {
+        padding: 0 2rem;
+    }
+    .container .box {
+        width: 100%;
+    }
+}
+@media (max-width: 495px) {
+    .title {
+        min-height: 65px;
+    }
+    .website__title h1 {
+        font-size: 1.6rem;
+    }
+    .website__title .title p span::after {
+        display: none;
+    }
+    .website__title .title-500::after {
+        content: "";
+        position: absolute;
+        width: 2.5px;
+        height: 2.2rem;
+        background-color: black;
+    }
 }
