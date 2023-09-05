@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/icon.png">
+    <link rel="stylesheet" href="styles/main.css">
+    <title>Sudeming</title>
+</head>
+<body>
+    <header class="nav-bar">
+        <div class="website__title">
+            <img src="images/icon.png" alt="">
+            <h1 class="title">Sudeming. <span></span></h1>
+        </div>
+        <div class="website__options">
+            <a class="option" href="">Home</a>
+            <a class="option" href="">About</a>
+            <a class="option" href="">Contact</a>
+        </div>
+    </header>
+    <main>
+        <p class="choose">Choose how you want to generate an image</p>
+        <div class="container">
+            <div class="box">
+                <h1 class="choosing__title">Generate Your Image <span class="upper__case">randomly</span></h1>
+                <p class="choosing__text">All you have to do is to click the button to generate an image for you.</p>
+                <form action="/random" method="post">
+                    <input class="choosing__btn" type="submit" value="Generate">
+                </form>
+            </div>
+            <div class="line"></div>
+            <div class="box search">
+                <h1 class="choosing__title">Generate Your Image by <span class="upper__case">searching</span></h1>
+                <p class="choosing__text">Answer this question to generate an image for you.</p>
+                <form action="/search" method="post">
+                    <label for="searchWord">search about:</label>
+                    <input type="text" name="searchWord" id="searchWord">
+                    <input class="choosing__btn" type="submit" value="Generate">
+                </form>
+            </div>
+        </div>
+    </main>
+    <div class="img__container">
+        <% if(locals.link) { %>
+            <img src="<%= link %>" alt="">
+            <% } else { %>
+                <p>Generate Your Image Now!</p>
+            <% } %>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
